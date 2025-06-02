@@ -19,6 +19,23 @@ int main(void){
     if(list==NULL){
     list=n;
    }
+   else if(n->number < list->number){
+    n->next = list;
+    list = n;
+   }
+   else{
+    for(node *ptr=list;ptr != NULL;ptr=ptr->next){
+        if(ptr->next == NULL){
+            ptr->next = n;
+            break;
+        }
+        if(n->number < ptr->next->number){
+            n->next = ptr->next;
+            ptr->next = n;
+            break;
+        }
+    }
+   }
 
 
    }
@@ -28,8 +45,11 @@ int main(void){
     printf("%i",ptr->number);
     ptr=ptr->next;
    }
+   ptr = list;
    while(ptr!=NULL){
+    node *next = ptr->next;
     free(ptr);
+    ptr = next;
    }
 
 }
