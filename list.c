@@ -15,19 +15,21 @@ int main(void){
         return 1;
     }
     scanf("%i/n", &n->number);
-    n->next = list;
-    list = n;
+    n->next = NULL;
+    if(list==NULL){
+    list=n;
+   }
+
 
    }
+   
    node *ptr = list;
    while(ptr != NULL){
     printf("%i",ptr->number);
     ptr=ptr->next;
    }
-   while(ptr != NULL){
-    node *next = ptr->next;
+   while(ptr!=NULL){
     free(ptr);
-    ptr = next;
    }
 
 }
